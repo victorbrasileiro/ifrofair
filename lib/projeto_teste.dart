@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: appTitle, // Define o titulo do aplicativo
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(
         title: appTitle, // Passa o titulo para a página inicial
       ),
@@ -70,15 +70,26 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        //flexibleSpace: Image.asset("asset/icon.png",),
+        iconTheme: IconThemeData(color: Colors.white, size: 30),
         centerTitle: true,
         titleTextStyle: TextStyle(
-            color: Colors.white, fontSize: 21, fontWeight: FontWeight.w700),
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.w700),
         backgroundColor: Color.fromARGB(255, 2, 132, 199),
         title: Text(
-          widget.title, // Título da página, definido no construtor
+          widget.title,
+          // Título da página, definido no construtor
         ),
-
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home, size: 30,),
+            onPressed: () {
+              _onItemTapped(0); // Atualiza o índice para a tela inicial
+            },
+          ),
+        ],
       ),
       body: Center(
         child: _widgetOptions[_selectedIndex], // Corpo da página, exibindo o conteúdo da tela selecionada
